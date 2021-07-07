@@ -1,3 +1,3 @@
 myRepo:
-  gitProvider: TamirGitHub
+  gitProvider: Github
   path: TamirHadad/jfrog-pipelines-simple

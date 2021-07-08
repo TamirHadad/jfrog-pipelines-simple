@@ -20,17 +20,15 @@ resources:
       runID: 1
 
 pipelines:
-  - name: my_first_pipeline
-    steps:
-      - name: p1_s1
+ 
+      - name: p1_s2
         type: Bash
         configuration:
           inputResources:
-            # Sets up step to be triggered when there are commit events to myFirstRepo
             - name: myFirstRepo
         execution:
           onExecute:
-            # Data from input resources is available as env variables in the step
+          # Data from input resources is available as env variables in the step
             - echo $res_myFirstRepo_commitSha
             # The next two commands add variables to run state, which is available to all downstream steps in this run
             # Run state documentation: https://www.jfrog.com/confluence/display/JFROG/Creating+Stateful+Pipelines#CreatingStatefulPipelines-RunState
@@ -40,14 +38,6 @@ pipelines:
             # So this will be empty during first run and will be set to prior run number in subsequent runs
             # Pipeline state documentation: https://www.jfrog.com/confluence/display/JFROG/Creating+Stateful+Pipelines#CreatingStatefulPipelines-PipelineState
             - echo "Previous run ID is $prev_runid"
-
-      - name: p1_s2
-        type: Bash
-        configuration:
-          inputResources:
-            - name: myFirstRepo
-        execution:
-          onExecute:
             # Data from input resources is available as env variables in the step
             - echo $res_myFirstRepo_commitSha
             # The next two commands add variables to run state, which is available to all downstream steps in this run

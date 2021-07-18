@@ -12,6 +12,7 @@ resources:
       branches:
         # Specifies which branches will trigger dependent steps
         include: master
+      nodePool: test1  
 
   - name: myPropertyBag
     type: PropertyBag

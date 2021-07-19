@@ -20,9 +20,7 @@ resources:
       runID: 1
 
 pipelines:
-  - name: my_first_pipeline
-    configuration:
-      nodePool: test1  
+  - name: my_first_pipeline 
     steps:
       - name: p1_s2
         type: Bash

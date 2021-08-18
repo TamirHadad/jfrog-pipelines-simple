@@ -22,7 +22,7 @@ resources:
 pipelines:
   - name: my_first_pipeline
     configuration:
-      nodePool: TAMIRTEST3
+      nodePool: TAMIRTEST4
     steps:
       - name: p1_s2
         type: Bash

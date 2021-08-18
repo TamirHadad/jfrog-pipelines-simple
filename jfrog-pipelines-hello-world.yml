@@ -20,7 +20,9 @@ resources:
       runID: 1
 
 pipelines:
-  - name: my_first_pipeline 
+  - name: my_first_pipeline
+    configuration:
+      nodePool: TAMIRTEST
     steps:
       - name: p1_s2
         type: Bash

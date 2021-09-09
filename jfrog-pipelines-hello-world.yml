@@ -21,9 +21,9 @@ resources:
 
 
 pipelines:
-  - name: my_first_pipeline
+  - name: my_first_pipeline1
     steps:
-      - name: p1_s2
+      - name: p1_s21
         type: Bash
         configuration:
           inputResources:
@@ -53,11 +53,11 @@ pipelines:
             # Demonstrates the availability of an env variable written to run state during p1_s1
             - echo $current_runid
 
-      - name: p1_s3
+      - name: p1_s31
         type: Bash
         configuration:
           inputSteps:
-            - name: p1_s2
+            - name: p1_s21
           outputResources:
             - name: myPropertyBag3
         execution:
@@ -70,7 +70,7 @@ pipelines:
             # Utility functions documentation: https://www.jfrog.com/confluence/display/JFROG/Pipelines+Utility+Functions
             - write_output myPropertyBag2 commitSha=$commitSha runID=$current_runid
 
-  - name: my_second_pipeline
+  - name: my_second_pipeline1
     steps:
       - name: p2_s1
         type: Bash

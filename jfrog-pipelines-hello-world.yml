@@ -85,7 +85,7 @@ pipelines:
 
 name: my_third_pipeline1
     steps:
-      - name: p2_s1
+      - name: p3_s1
         type: Bash
         execution:
           onExecute:

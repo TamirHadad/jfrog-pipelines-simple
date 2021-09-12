@@ -82,3 +82,13 @@ pipelines:
           onExecute:
             # Retrieves the commitSha from input resource
             - echo "CommitSha is $res_myPropertyBag2_commitSha"
+
+name: my_third_pipeline1
+    steps:
+      - name: p2_s1
+        type: Bash
+        execution:
+          onExecute:
+            # Retrieves the commitSha from input resource
+            - echo "executing step..."
+

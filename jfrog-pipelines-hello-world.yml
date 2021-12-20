@@ -30,6 +30,10 @@ pipelines:
       - name: p1_s21
         type: Bash
         configuration:
+          environmentVariables:
+            readOnly:
+              env1: "env1t"
+              env2: "env2t"
           inputResources:
             - name: myFirstRepo1
             - name: myCron
@@ -55,6 +59,8 @@ pipelines:
             # So this will be empty during first run and will be set to prior run number in subsequent runs
             # Pipeline state documentation: https://www.jfrog.com/confluence/display/JFROG/Creating+Stateful+Pipelines#CreatingStatefulPipelines-PipelineState
             - echo "Previous run ID is $prev_runid"
+            - echo "ENV1 values $env1"
+            - echo "ENV2 values $env2"
             # Demonstrates the availability of an env variable written to run state during p1_s1
             - echo $current_runid
 

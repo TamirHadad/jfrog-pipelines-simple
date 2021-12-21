@@ -32,8 +32,8 @@ pipelines:
         configuration:
           environmentVariables:
             readOnly:
-              env1: env1t
-              env2: env2t
+              env1: "env1t"
+              env2: "env2t"
           inputResources:
             - name: myFirstRepo1
             - name: myCron

@@ -2,10 +2,6 @@ template: true   # required for local templates
 valuesFilePath: ./values.yml
 
 resources:
-  - name: myCron
-    type: CronTrigger
-    configuration:
-      interval: "0 12 * * *"
   - name: myFirstRepo1
     type: GitRepo
     configuration:
@@ -35,7 +31,6 @@ pipelines:
             env2: "env2t"
           inputResources:
             - name: myFirstRepo1
-            - name: myCron
         execution:
           onExecute:
           # Data from input resources is available as env variables in the step

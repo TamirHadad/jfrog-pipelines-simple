@@ -27,7 +27,7 @@ pipelines:
         configuration:
           environmentVariables:
             env1: "env1t"
-            env2: "env2t"
+            env2: "env2tt"
           inputResources:
             - name: myFirstRepo
         execution:

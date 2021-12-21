@@ -2,7 +2,7 @@ template: true   # required for local templates
 valuesFilePath: ./values.yml
 
 resources:
-  - name: myFirstRepo1
+  - name: myFirstRepo
     type: GitRepo
     configuration:
       # SCM integration where the repository is located
@@ -11,26 +11,25 @@ resources:
       path: {{ .Values.myRepo.path }} # this will be replaced from values.yml
       branches:
         # Specifies which branches will trigger dependent steps
-        include: master 
+        include: master
 
-  - name: myPropertyBag3
+  - name: myPropertyBag
     type: PropertyBag
     configuration:
       commitSha: 1
       runID: 1
 
-
 pipelines:
-  - name: my_first_pipeline1
+  - name: my_first_pipeline
     steps:
-      - name: p1_s21
+      - name: p1_s2
         type: Bash
         configuration:
           environmentVariables:
             env1: "env1t"
             env2: "env2t"
           inputResources:
-            - name: myFirstRepo1
+            - name: myFirstRepo
         execution:
           onExecute:
           # Data from input resources is available as env variables in the step
@@ -64,7 +63,7 @@ pipelines:
           inputSteps:
             - name: p1_s21
           outputResources:
-            - name: myPropertyBag3
+            - name: myPropertyBag
         execution:
           onExecute:
             - echo $current_runid
@@ -73,44 +72,17 @@ pipelines:
             # Uses an utility function to update the output resource with the commitSha that triggered this run
             # Dependent pipelines can be configured to trigger when this resource is updated
             # Utility functions documentation: https://www.jfrog.com/confluence/display/JFROG/Pipelines+Utility+Functions
-            - write_output myPropertyBag2 commitSha=$commitSha runID=$current_runid
+            - write_output myPropertyBag commitSha=$commitSha runID=$current_runid
 
-      - name: p1_s32
-        type: Bash
-        configuration:
-          inputSteps:
-            - name: p1_s31
-          outputResources:
-            - name: myPropertyBag3
-        execution:
-          onExecute:
-            - echo $current_runid
-            # Writes current run number to pipeline state
-            - add_pipeline_variables prev_runid=$run_id
-            # Uses an utility function to update the output resource with the commitSha that triggered this run
-            # Dependent pipelines can be configured to trigger when this resource is updated
-            # Utility functions documentation: https://www.jfrog.com/confluence/display/JFROG/Pipelines+Utility+Functions
-            - write_output myPropertyBag2 commitSha=$commitSha runID=$current_runid
-
-  - name: my_second_pipeline1
+  - name: my_second_pipeline
     steps:
       - name: p2_s1
         type: Bash
         configuration:
           inputResources:
-            # Sets up step to be triggered when myPropertyBag2 is updated
-            - name: myPropertyBag3
+            # Sets up step to be triggered when myPropertyBag is updated
+            - name: myPropertyBag
         execution:
           onExecute:
             # Retrieves the commitSha from input resource
-            - echo "CommitSha is $res_myPropertyBag2_commitSha"
-
-  - name: my_third_pipeline1
-    steps:
-      - name: p3_s1
-        type: Bash
-        execution:
-          onExecute:
-            # Retrieves the commitSha from input resource
-            - echo "executing step..."
-
+            - echo "CommitSha is $res_myPropertyBag_commitSha"

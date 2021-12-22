@@ -21,16 +21,17 @@ resources:
 
 pipelines:
   - name: my_first_pipeline
+    configuration:
+      environmentVariables:
+        readOnly:
+          NUMBER_OF_NODES_IN_NODEPOOL:
+            description: "test"
+            default: "test"
+            allowCustom: true
     steps:
       - name: p1_s2
         type: Bash
         configuration:
-          environmentVariables:
-            readOnly:
-              NUMBER_OF_NODES_IN_NODEPOOL:
-                description: "test"
-                default: "test"
-                allowCustom: true
           inputResources:
             - name: myFirstRepo
         execution:

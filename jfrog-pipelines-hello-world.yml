@@ -29,8 +29,8 @@ pipelines:
             readOnly:
               NUMBER_OF_NODES_IN_NODEPOOL:
                 description: "test"
-                  default: "test"
-                  allowCustom: true
+                default: "test"
+                allowCustom: true
           inputResources:
             - name: myFirstRepo
         execution:

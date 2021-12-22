@@ -28,6 +28,10 @@ pipelines:
             description: "test"
             default: "test"
             allowCustom: true
+          NUMBER_OF_NODES_IN_NODEPOOL1:
+            description: "test"
+            default: "test"
+            allowCustom: true
     steps:
       - name: p1_s2
         type: Bash

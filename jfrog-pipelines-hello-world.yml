@@ -38,7 +38,7 @@ pipelines:
             - name: myPropertyBag
         execution:
           onExecute:
-            - for i in {1..5} do echo "Welcome $i times" done
+            - echo "Welcome  times"
             # Writes current run number to pipeline state
             - add_pipeline_variables prev_runid=$run_id
             # Uses an utility function to update the output resource with the commitSha that triggered this run

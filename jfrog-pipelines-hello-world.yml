@@ -63,7 +63,4 @@ pipelines:
             - echo "ENV1 values $env1"
             - echo "ENV2 values $env2"
             # Demonstrates the availability of an env variable written to run state during p1_s1
-            - for i in {1..500000}
-            - do
-            -  echo "echo "Need to have a long string so I can crash API, Need to have a long string so I can crash APINeed to have a long string so I can crash APINeed to have a long string so I can crash APINeed to have a long string so I can crash APINeed to have a long string so I can crash APINeed to have a long string so I can crash APINeed to have a long string so I can crash APINeed to have a long string so I can crash APINeed to have a long string so I can crash APINeed to have a long string so I can crash APINeed to have a long string so I can crash API""
-            - done
+            - for i in {1..500000}; do echo "Need to have a long string so I can crash API, Need to have a long string so I can crash APINeed to have a long string so I can crash APINeed to have a long string so I can crash APINeed to have a long string so I can crash APINeed to have a long string so I can crash APINeed to have a long string so I can crash APINeed to have a long string so I can crash APINeed to have a long string so I can crash APINeed to have a long string so I can crash APINeed to have a long string so I can crash APINeed to have a long string so I can crash API"; done

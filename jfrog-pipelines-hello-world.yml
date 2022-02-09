@@ -38,7 +38,7 @@ pipelines:
             - name: myPropertyBag
         execution:
           onExecute:
-            - echo "Welcome  times"
+            - echo "CommitSha is $res_myPropertyBag_commitSha"
             # Writes current run number to pipeline state
             - add_pipeline_variables prev_runid=$run_id
             # Uses an utility function to update the output resource with the commitSha that triggered this run

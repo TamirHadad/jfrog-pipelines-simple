@@ -24,9 +24,6 @@ pipelines:
     steps:
       - name: p1_s2
         type: Bash
-        configuration:
-          inputSteps:
-            - name: p1_s3
         execution:
           onExecute:
             # Demonstrates the availability of an env variable written to run state during p1_s1

@@ -48,7 +48,8 @@ pipelines:
 
   - name: my_second_pipeline
     steps:
-      - name: p2_s1
+      {{ range $i, $e := until 5 }}
+      - name: p2_s{{$i}}
         type: Bash
         configuration:
           inputResources:
@@ -58,3 +59,4 @@ pipelines:
           onExecute:
             # Retrieves the commitSha from input resource
             - echo "CommitSha is $res_myPropertyBag_commitSha"
+      {{ end }}

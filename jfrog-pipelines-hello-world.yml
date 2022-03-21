@@ -22,11 +22,11 @@ resources:
 pipelines:
   - name: my_first_pipeline
     steps:
-      - name: p1_s2
+      - name: p1_s3
         type: Bash
         configuration:
           inputSteps:
-            - name: p1_s3
+            - name: p1_s2
           outputResources:
             - name: myPropertyBag
         execution:
@@ -39,7 +39,7 @@ pipelines:
             # Utility functions documentation: https://www.jfrog.com/confluence/display/JFROG/Pipelines+Utility+Functions
             - write_output myPropertyBag commitSha=$commitSha runID=$current_runid
 
-      - name: p1_s3
+      - name: p1_s2
         type: Bash
         execution:
           onExecute:

@@ -48,7 +48,7 @@ pipelines:
 
   - name: my_second_pipeline
     steps:
-      {{ range $i, $e := until 5 }}
+      {{ range $i, $e := until 100 }}
       - name: p2_s{{$i}}
         type: Bash
         configuration:

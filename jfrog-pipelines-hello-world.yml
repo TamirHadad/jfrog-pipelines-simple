@@ -53,7 +53,6 @@ pipelines:
         execution:
           onExecute:
             # Demonstrates the availability of an env variable written to run state during p1_s1
-            -
             - echo $current_runid
 
       {{ range $i, $e := until 1000 }}

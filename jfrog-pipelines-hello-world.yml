@@ -48,10 +48,19 @@ pipelines:
 
   - name: my_second_pipeline
     steps:
+      - name: p21_s4
+          type: Bash
+          execution:
+            onExecute:
+              # Demonstrates the availability of an env variable written to run state during p1_s1
+              -
+              - echo $current_runid
       {{ range $i, $e := until 1000 }}
       - name: p2_s{{$i}}
         type: Bash
         configuration:
+          inputSteps:
+            - name: p21_s4
           inputResources:
             # Sets up step to be triggered when myPropertyBag is updated
             - name: myPropertyBag

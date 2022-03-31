@@ -49,12 +49,13 @@ pipelines:
   - name: my_second_pipeline
     steps:
       - name: p21_s4
-          type: Bash
-          execution:
-            onExecute:
-              # Demonstrates the availability of an env variable written to run state during p1_s1
-              -
-              - echo $current_runid
+        type: Bash
+        execution:
+          onExecute:
+            # Demonstrates the availability of an env variable written to run state during p1_s1
+            -
+            - echo $current_runid
+
       {{ range $i, $e := until 1000 }}
       - name: p2_s{{$i}}
         type: Bash

@@ -1,0 +1,71 @@
+template: true   # required for local templates
+valuesFilePath: ./values.yml
+
+resources:
+  - name: myFirstRepo22
+    type: GitRepo
+    configuration:
+      # SCM integration where the repository is located
+      gitProvider: {{ .Values.myRepo.gitProvider }} # this will be replaced from values.yml
+      # Repository path, including org name/repo name
+      path: {{ .Values.myRepo.path }} # this will be replaced from values.yml
+      branches:
+        # Specifies which branches will trigger dependent steps
+        include: master3
+
+  - name: myPropertyBag22
+    type: PropertyBag
+    configuration:
+      commitSha: 1
+      runID: 1
+
+pipelines:
+  - name: my_first_pipeline22
+    steps:
+      - name: p1_s2
+        type: Bash
+        configuration:
+          inputSteps:
+            - name: p1_s3
+          outputResources:
+            - name: myPropertyBag
+        execution:
+          onExecute:
+            - echo "CommitSha is $res_myPropertyBag_commitSha"
+            # Writes current run number to pipeline state
+            - add_pipeline_variables prev_runid=$run_id
+            # Uses an utility function to update the output resource with the commitSha that triggered this run
+            # Dependent pipelines can be configured to trigger when this resource is updated
+            # Utility functions documentation: https://www.jfrog.com/confluence/display/JFROG/Pipelines+Utility+Functions
+            - write_output myPropertyBag commitSha=$commitSha runID=$current_runid
+
+      - name: p1_s322
+        type: Bash
+        execution:
+          onExecute:
+            # Demonstrates the availability of an env variable written to run state during p1_s1
+            - echo $current_runid
+
+  - name: my_second_pipeline22
+    steps:
+      - name: p21_s422
+        type: Bash
+        execution:
+          onExecute:
+            # Demonstrates the availability of an env variable written to run state during p1_s1
+            - echo $current_runid
+
+      {{ range $i, $e := until 1000 }}
+      - name: p2_s22{{$i}}
+        type: Bash
+        configuration:
+          inputSteps:
+            - name: p21_s422
+          inputResources:
+            # Sets up step to be triggered when myPropertyBag is updated
+            - name: myPropertyBag22
+        execution:
+          onExecute:
+            # Retrieves the commitSha from input resource
+            - echo "CommitSha is $res_myPropertyBag_commitSha"
+      {{ end }}

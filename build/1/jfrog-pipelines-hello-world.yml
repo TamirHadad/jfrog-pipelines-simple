@@ -25,6 +25,8 @@ pipelines:
       - name: p1_s2
         type: Bash
         configuration:
+          inputResources:
+            - name: myFirstRepo10
           inputSteps:
             - name: p1_s3
           outputResources:

@@ -25,6 +25,8 @@ pipelines:
       - name: p1_s222
         type: Bash
         configuration:
+          inputResources:
+            - name: myFirstRepo22
           inputSteps:
             - name: p1_s322
           outputResources:

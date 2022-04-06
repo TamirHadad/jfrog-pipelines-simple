@@ -8,25 +8,25 @@ resources:
       commitSha: 1
       runID: 1
   - name: myPropertyBag2
-      type: PropertyBag
-      configuration:
-        commitSha: 1
-        runID: 1
+    type: PropertyBag
+    configuration:
+      commitSha: 1
+      runID: 1
   - name: myPropertyBag3
-      type: PropertyBag
-      configuration:
-        commitSha: 1
-        runID: 1
+    type: PropertyBag
+    configuration:
+      commitSha: 1
+      runID: 1
   - name: myPropertyBag4
-      type: PropertyBag
-      configuration:
-        commitSha: 1
-        runID: 1
+    type: PropertyBag
+    configuration:
+      commitSha: 1
+      runID: 1
   - name: myPropertyBag5
-      type: PropertyBag
-      configuration:
-        commitSha: 1
-        runID: 1
+    type: PropertyBag
+    configuration:
+      commitSha: 1
+      runID: 1
 
 pipelines:
   - name: testcron2

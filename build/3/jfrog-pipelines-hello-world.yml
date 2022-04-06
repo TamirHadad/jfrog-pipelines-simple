@@ -41,11 +41,11 @@ pipelines:
         type: Bash
         configuration:
           inputResources:
-            - name: myFirstRepo1
-            - name: myFirstRepo2
-            - name: myFirstRepo3
-            - name: myFirstRepo4
-            - name: myFirstRepo5
+            - name: myPropertyBag1
+            - name: myPropertyBag2
+            - name: myPropertyBag3
+            - name: myPropertyBag4
+            - name: myPropertyBag5
           inputSteps:
             - name: basicly
         execution:

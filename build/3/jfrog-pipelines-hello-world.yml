@@ -1,6 +1,33 @@
 template: true
 valuesFilePath: ./values.yml
 
+resources:
+  - name: myPropertyBag1
+    type: PropertyBag
+    configuration:
+      commitSha: 1
+      runID: 1
+  - name: myPropertyBag2
+      type: PropertyBag
+      configuration:
+        commitSha: 1
+        runID: 1
+  - name: myPropertyBag3
+      type: PropertyBag
+      configuration:
+        commitSha: 1
+        runID: 1
+  - name: myPropertyBag4
+      type: PropertyBag
+      configuration:
+        commitSha: 1
+        runID: 1
+  - name: myPropertyBag5
+      type: PropertyBag
+      configuration:
+        commitSha: 1
+        runID: 1
+
 pipelines:
   - name: testcron2
     steps:
@@ -13,6 +40,12 @@ pipelines:
       - name: basic{{$i}}
         type: Bash
         configuration:
+          inputResources:
+            - name: myFirstRepo1
+            - name: myFirstRepo2
+            - name: myFirstRepo3
+            - name: myFirstRepo4
+            - name: myFirstRepo5
           inputSteps:
             - name: basicly
         execution:

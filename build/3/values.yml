@@ -1,0 +1,3 @@
+myRepo:
+  gitProvider: Github
+  path: TamirHadad/jfrog-pipelines-simple-ex

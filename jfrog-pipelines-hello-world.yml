@@ -10,6 +10,9 @@ resources:
       gitProvider: {{ .Values.myRepo.gitProvider }} # this will be replaced from values.yml
       # Repository path, including org name/repo name
       path: {{ .Values.myRepo.path }} # this will be replaced from values.yml
+      branches:
+        include: (master|(release|milestone)\/[0-9]+-.*|(preRelease|bugfix|feature|hotfix|infra)\/.*)
+        exclude: ^master$
 
   - name: myPropertyBag
     type: PropertyBag

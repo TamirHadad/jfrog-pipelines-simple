@@ -2,7 +2,7 @@ template: true   # required for local templates
 valuesFilePath: ./values.yml
 
 resources:
-{{ if or ( contains "ne" "{{gitBranch}}"  )}}
+{{ if or ( contains "master" "{{gitBranch}}"  )}}
   - name: myFirstRepo
     type: GitRepo
     configuration:
@@ -19,7 +19,7 @@ resources:
 {{ end }}
 
 pipelines:
-{{ if or ( contains "ne" "{{gitBranch}}"  )}}
+{{ if or ( contains "master" "{{gitBranch}}"  )}}
   - name: my_first_pipeline
     configuration:
       environmentVariables:

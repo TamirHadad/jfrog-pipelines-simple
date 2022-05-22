@@ -38,6 +38,7 @@ pipelines:
         configuration:
           inputResources:
             - name: myFirstRepo
+              trigger: false
         execution:
           onExecute:
           # Data from input resources is available as env variables in the step

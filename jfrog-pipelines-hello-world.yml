@@ -12,6 +12,7 @@ resources:
       path: {{ .Values.myRepo.path }} # this will be replaced from values.yml
       branches:
         include: master
+        exclude: master1213
 
   - name: myPropertyBag
     type: PropertyBag
